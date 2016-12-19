@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Add Student</title>
+    <title>Update Student</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
