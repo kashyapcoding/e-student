@@ -99,7 +99,7 @@ $(document).ready(function() {
 	  			  <td>'.$row['s_std'].' '.$row['s_div'].'</td>
 	  			  <td>'.$row['s_te'].'</td>
 	  			  <td>'.$row['s_grade'].'</td>
-	  			  <td><a href="">
+	  			  <td><a href="edit.php?id='.urlencode(base64_encode($s_id)).'">
 	  				<button type="button" class="btn btn-success ">
 	  				<span class="glyphicon glyphicon-pencil"></span> 
 	  				</button>
@@ -116,7 +116,6 @@ $(document).ready(function() {
 
 			</tbody>
 			</table>
-			<center><a href="dash_approver.php"> <button type="button" class="btn btn-danger btn"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</button></a>
 			</div>
 		</div>
 		</section>

@@ -19,11 +19,27 @@
 
 <body>
 <?php include_once("navbar.php");   ?>
-<form id="form1" class="well form-horizontal" action="form_handle.php?mode=add" method="POST"  enctype="multipart/form-data">
+<?php
+    require("configure.php");
+    $id=urldecode(base64_decode($_GET['id']));
+    $id_enc=urlencode(base64_encode($id));
+    $sql="SELECT * FROM s_details WHERE s_id=$id";
+    $result=$conn->query($sql);
+    while($row = $result->fetch_assoc())
+    {
+        $f_name=$row['f_name'];
+        $l_name=$row['l_name'];
+        $s_std=$row['s_std'];
+        $s_div=$row['s_div'];
+        $s_te=$row['s_te'];
+    }
+?>
+
+<form id="form1" class="well form-horizontal" action="form_handle.php?mode=ed&id=<?php echo $id_enc; ?>" method="POST"  enctype="multipart/form-data">
         <fieldset>
             <div class="container">
                 <!-- Form Name -->
-                <legend><center>Add Student Details</center></legend>
+                <legend><center>Update Student Details</center></legend>
 
                 <?php $si=1;?>
 
@@ -33,7 +49,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="textinput" name="f_name" type="text" placeholder="First Name" class="form-control input-md" required="" pattern=".{3,20}" title="Input Range 3-20 characters"  autofocus="">
+                            <input id="textinput" name="f_name" type="text" value=<?php echo $f_name; ?> class="form-control input-md" required="" pattern=".{3,20}" title="Input Range 3-20 characters"  autofocus="">
                         </div>
                     </div>
                 </div>
@@ -45,7 +61,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="textinput" name="l_name" type="text" placeholder="Last Name" class="form-control input-md" pattern=".{1,20}" title="Input Range 1-20 characters">
+                            <input id="textinput" name="l_name" type="text" value=<?php echo $l_name; ?> class="form-control input-md" pattern=".{1,20}" title="Input Range 1-20 characters">
                         </div>
                     </div>
                 </div>
@@ -58,6 +74,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><b>STD</b></span>
                             <select id="id_std" name="s_std" class="form-control" required="" >
+                                <option value=<?php echo $s_std; ?> selected="selected"><?php echo $s_std; ?></option>
                                 <option value="9">9</option>
                                 <option value="10">10</option>
                             </select>
@@ -72,6 +89,7 @@
                         <div class="input-group">
                             <span class="input-group-addon"><b>DIV</b></span>
                             <select id="id_div" name="s_div" class="form-control" required="" >
+                                <option value=<?php echo $s_div; ?> selected="selected"><?php echo $s_div; ?></option>
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
@@ -91,7 +109,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-education"></i></span>
-                            <input id="id_Marks" name="s_te" type="number" placeholder="Marks" class="form-control input-md" required min="0" max="40" title="Marks Range: 0-40">
+                            <input id="id_Marks" name="s_te" type="number" value=<?php echo $s_te; ?> class="form-control input-md" required min="0" max="40" title="Marks Range: 0-40">
                             <div class="input-group-addon">.00</div>
                         </div>
                     </div>
@@ -103,7 +121,7 @@
                     <label class="col-md-4 control-label" for="submit"></label>
                     <div class="col-md-4">
                     <center>
-                        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Submit </span>
+                        <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Update </span>
                         </button>
                     </center>
                     </div>

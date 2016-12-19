@@ -1,5 +1,6 @@
 <?php
 	require_once ("configure.php");
+	$mode=$_GET['mode'];
 
 	$f_name=mysqli_real_escape_string($conn,$_POST['f_name']);
 	$l_name=mysqli_real_escape_string($conn,$_POST['l_name']);
@@ -25,22 +26,40 @@
 			else  			 			 return 'Error';
 	}
 
-	$sql="INSERT INTO s_details(f_name,l_name,s_std,s_div,s_te,s_grade,s_date) 
-	VALUES('$f_name','$l_name','$s_std','$s_div','$s_te','$s_grade','$s_Date')";
-
+	if($mode=='add')
+   {	
+   		$action='added';
+   		$loc='index.php';
+		$sql="INSERT INTO s_details(f_name,l_name,s_std,s_div,s_te,s_grade,s_date) 
+		VALUES('$f_name','$l_name','$s_std','$s_div','$s_te','$s_grade','$s_Date')";
+   }
+	else if($mode=='ed')
+	{
+		$id=urldecode(base64_decode($_GET['id']));
+		$action='updated';
+		$loc='view_students.php';
+		$sql="UPDATE s_details
+		 SET f_name='$f_name',
+		 l_name='$l_name',
+		 s_std='$s_std',
+		 s_div='$s_div',
+		 s_te='$s_te',
+		 s_grade='$s_grade',
+		 s_date='$s_Date'
+		 WHERE s_id=$id";
+	}
 	if ($conn->query($sql) == TRUE)
 					 {
     					echo '<script language="Javascript">
-							alert ("Student Details Added.");
-							window.location.replace("index.php");	//redirects to dashboard
+							alert ("Student Details '.$action.'");
+							window.location.replace("'.$loc.'");
 							</script>';
 					 } 
 						else {
     							echo "Error: " . $sql . "<br>" . $conn->error;
     							echo '<script language="Javascript">
 								alert ("Error: '.$conn->error.'");
-								//window.location.replace("index.php");
+								//window.location.replace("'.$loc.'");
 								</script>';
 							 }
-					
- ?>
+	 ?>
