@@ -18,6 +18,7 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
+	<link rel="stylesheet" type="text/css" href="css/buttons.bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="datatables/media/css/dataTables.material.css">
 	<link rel="stylesheet" type="text/css" href="datatables/resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="datatables/resources/demo.css">
@@ -34,6 +35,32 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
 	</script>
 	<script type="text/javascript" language="javascript" src="datatables/media/js/dataTables.material.js">
 	</script>
+	
+
+
+	<script type="text/javascript" language="javascript" src="js/dataTables.buttons.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="js/buttons.bootstrap.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js">
+	</script>
+
+
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js">
+	</script>
+
+	<script type="text/javascript" language="javascript" src="js/buttons.html5.js">
+	</script>
+
+
+	<script type="text/javascript" language="javascript" src="js/buttons.print.js">
+	</script>
+
+	<script type="text/javascript" language="javascript" src="js/buttons.colVis.js">
+	</script>
+
 	<script type="text/javascript" language="javascript" src="datatables/resources/syntax/shCore.js">
 	</script>
 	<script type="text/javascript" language="javascript" src="datatables/resources/demo.js">
@@ -43,22 +70,41 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <link href="css/mystyle.css" rel="stylesheet"></link>
+    <style>
+    @media screen and (min-width: 768px){
+            .rwd-break { display: none; }
+        }
+    </style>
 	<script type="text/javascript" language="javascript" class="init">
 	
 $(document).ready(function() {
 	$('#example').DataTable( {
+		"lengthMenu": [5,10,25,50,100],
+		"scrollY": "400px",
+  		"scrollCollapse": true,
+  		//"paging": false,
+
+		language: {
+			lengthMenu: 'Rows : _MENU_' ,
+			 search: '<i style="font-size:15px;" class="fa fa-search"></i>',
+        	 searchPlaceholder: '',
+        	 //binfo: "Show page _ENTRY_ of _PAGES_",
+        	 sInfo: '<i style="font-size:15px;" class="fa fa-list"></i> _START_ - _END_ of _TOTAL_',
+        	  paginate: {
+                "previous": '<i class="material-icons">keyboard_arrow_left</i>',
+                    "next": '<i class="material-icons">keyboard_arrow_right</i>'
+            }
+    },
 		columnDefs: [
 			{
-				//targets: [ 0,1 ],
-				//className: 'mdl-data-table__cell--non-numeric'
+				targets: [ 0, 1, 2, 3, 4 ],
+				className: 'mdl-data-table__cell--non-numeric'
 			}
 		]
 	} );
-
 } );
 
 	</script>
-
 
 </head>
 
@@ -66,12 +112,69 @@ $(document).ready(function() {
 <?php include_once("navbar.php");   ?>
 <div class="container-fluid">
 <center><h3>Student Scores</h3></center>
-<section>
+<br>
+
+<div class="row">
+
+<div class="col-sm-6 col-md-4">
+ <div class="btn-group btn-group-justified" id="rrr" data-toggle="buttons">
+ <label class="btn btn-default active">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" checked> All
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > 5
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> 6
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Praise" id="option_radio3" autocomplete="off"> 7
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 8
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 9
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 10
+  </label>
+</div>
+</div>
+<br class="rwd-break" />
+<div class="col-sm-6 col-md-4">
+ <div class="btn-group btn-group-justified " data-toggle="buttons">
+ <label class="btn btn-default active">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" checked> All
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > A
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> B
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > C
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > D
+  </label>
+  <label class="btn btn-default">
+    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> E
+  </label>
+  </div>
+  </div>
+
+</div>
+<br>
 <div style="overflow-x:auto;">
 <script>
         function msg()
         { return confirm ("Are you sure want to delete this record?\nNote: This action cannot be undone");	}
 </script>
+
+
+
 <table id="example" class="mdl-data-table table-responsive" cellspacing="0" width="100%" >
 			<thead>
 					<tr>
@@ -87,7 +190,7 @@ $(document).ready(function() {
 			<tbody>
    <?php
    	require("configure.php");
-   	$sql="SELECT * FROM s_details";
+   	$sql="SELECT * FROM s_details ORDER BY s_id DESC";
    	$result=$conn->query($sql);
 	$si_no=0;
 	while($row = $result->fetch_assoc()) 
@@ -104,7 +207,7 @@ $(document).ready(function() {
 	  				<span class="glyphicon glyphicon-pencil"></span> 
 	  				</button>
 	  				</a>
-</td>
+					</td>
 	  			  <td><a href="delete.php?id='.$s_id.'">
 	  				<button type="button" onclick="return msg()" class="btn btn-danger ">
 	  				<span class="glyphicon glyphicon-trash"></span> 
@@ -116,6 +219,22 @@ $(document).ready(function() {
 
 			</tbody>
 			</table>
-			</div>
+
+
 		</div>
-		</section>
+		</div>
+		<script>
+		$(document).ready(function(){
+    // Use only for V1
+    $('#radioBtn span').on('click', function(){
+        var sel = $(this).data('value');
+        var tog = $(this).data('toggle');
+        $('#'+tog).val(sel);
+        // You can change these lines to change classes (Ex. btn-default to btn-danger)
+        $('span[data-toggle="'+tog+'"]').not('[data-value="'+sel+'"]').removeClass('active btn-primary').addClass('notActive btn-default');
+        $('span[data-toggle="'+tog+'"][data-value="'+sel+'"]').removeClass('notActive btn-default').addClass('active btn-primary');
+    });
+    
+   
+});
+		</script>

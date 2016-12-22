@@ -49,7 +49,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="textinput" name="f_name" type="text" value=<?php echo $f_name; ?> class="form-control input-md" required="" pattern=".{3,20}" title="Input Range 3-20 characters"  autofocus="">
+                            <input id="textinput" name="f_name" type="text" value="<?php echo $f_name; ?>" class="form-control input-md" required="" pattern=".{3,20}" title="Input Range 3-20 characters"  autofocus="">
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="textinput" name="l_name" type="text" value=<?php echo $l_name; ?> class="form-control input-md" pattern=".{1,20}" title="Input Range 1-20 characters">
+                            <input id="textinput" name="l_name" type="text" value="<?php echo $l_name; ?>" class="form-control input-md" pattern=".{1,20}" title="Input Range 1-20 characters">
                         </div>
                     </div>
                 </div>

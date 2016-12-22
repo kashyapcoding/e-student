@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="http://www.datatables.net/favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+	<title>Buttons example - Bootstrap 3</title>
+	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="datatables/media/css/dataTables.bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/buttons.bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="datatables/resources/syntax/shCore.css">
+	<link rel="stylesheet" type="text/css" href="datatables/resources/demo.css">
+	<style type="text/css" class="init">
+	
+	</style>
+	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.12.3.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="datatables/media/js/jquery.dataTables.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="datatables/media/js/dataTables.bootstrap.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="js/dataTables.buttons.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="js/buttons.bootstrap.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js">
+	</script>
+
+
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js">
+	</script>
+
+	<script type="text/javascript" language="javascript" src="js/buttons.html5.js">
+	</script>
+
+
+	<script type="text/javascript" language="javascript" src="js/buttons.print.js">
+	</script>
+
+	<script type="text/javascript" language="javascript" src="js/buttons.colVis.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="datatables/resources/syntax/shCore.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="datatables/resources/demo.js"">
+	</script>
+	<script type="text/javascript" language="javascript" class="init">
+	
+
+	
+
+
+$(document).ready(function() {
+	var table = $('#example').DataTable( {
+		lengthChange: false,
+		buttons: ['pdf','excel','colvis', 'print' ]
+	} );
+
+	table.buttons().container()
+		.appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+} );
+
+
+
+	</script>
+</head>
+<body class="dt-example dt-example-bootstrap">
+	<div class="container">
+		<section>
+			<h1>Buttons example <span>Bootstrap 3</span></h1>
+		
+			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Age</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<th>Name</th>
+						<th>Position</th>
+						<th>Office</th>
+						<th>Age</th>
+						<th>Start date</th>
+						<th>Salary</th>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td>Tiger Nixon</td>
+						<td>System Architect</td>
+						<td>Edinburgh</td>
+						<td>61</td>
+						<td>2011/04/25</td>
+						<td>$320,800</td>
+					</tr>
+
+	
+
+				</tbody>
+			</table>
+			
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,5 +1,7 @@
+<?php
+session_start();
+?>
 <html>
-
 <head>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="fav.png.">
@@ -12,8 +14,11 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+     <link href="css/animate.css" rel="stylesheet"></link>
+    <link href="css/bootstcss" rel="stylesheet"></link>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/bootstrap-notify.min.js"></script>
     <link href="css/mystyle.css" rel="stylesheet"></link>
 </head>
 
@@ -58,6 +63,10 @@
                         <div class="input-group">
                             <span class="input-group-addon"><b>STD</b></span>
                             <select id="id_std" name="s_std" class="form-control" required="" >
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
                                 <option value="9">9</option>
                                 <option value="10">10</option>
                             </select>
@@ -111,3 +120,35 @@
         </fieldset>
     </form>
     </body>
+
+<?php
+//unset($_SESSION['add_status']);
+if(isset($_SESSION['add_status']))
+if ($_SESSION['add_status']=='TRUE')
+{   ?>
+<script>
+$.notifyDefaults({
+    type: 'success',
+    allow_dismiss: false,
+    delay: 3000,
+});
+$.notify({
+    title: '<strong>Added<br></strong>',
+    icon: 'glyphicon glyphicon-ok',
+    message: 'Student Details Added!',
+},
+ 
+    {
+    animate: {
+        enter: 'animated fadeIn',
+        exit: 'animated fadeOut'
+    },
+    placement: {
+        from: 'bottom',
+        //align: 'center'
+    }
+});
+    </script>
+
+<?php   $_SESSION['add_status']='FALSE'; }
+?>
