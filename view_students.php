@@ -80,10 +80,10 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
 $(document).ready(function() {
 	$('#example').DataTable( {
 		"lengthMenu": [5,10,25,50,100],
-		"scrollY": "400px",
-  		"scrollCollapse": true,
-  		//"paging": false,
-
+		//"scrollY": "400px",
+  		//"scrollCollapse": true,
+  		responsive: true,
+  		fixedHeader: true,
 		language: {
 			lengthMenu: 'Rows : _MENU_' ,
 			 search: '<i style="font-size:15px;" class="fa fa-search"></i>',

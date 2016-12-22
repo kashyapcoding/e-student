@@ -74,7 +74,7 @@
 					 {
     					echo '<script language="Javascript">
 							//alert ("Student Details '.$action.'");
-							//window.location.replace("'.$loc.'");
+							window.location.replace("'.$loc.'");
 							</script>';
 							$_SESSION['add_status']='TRUE';
 					 } 
