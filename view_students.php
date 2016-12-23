@@ -18,7 +18,8 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.1.0/material.min.css">
-	<link rel="stylesheet" type="text/css" href="css/buttons.bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/buttons.bootstrap4.css">
+	<link rel="stylesheet" type="text/css" href="datatables/media/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="datatables/media/css/dataTables.material.css">
 	<link rel="stylesheet" type="text/css" href="datatables/resources/syntax/shCore.css">
 	<link rel="stylesheet" type="text/css" href="datatables/resources/demo.css">
@@ -33,9 +34,10 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
 	</script>
 	<script type="text/javascript" language="javascript" src="datatables/media/js/jquery.dataTables.js">
 	</script>
-	<script type="text/javascript" language="javascript" src="datatables/media/js/dataTables.material.js">
-	</script>
 	
+	
+	<script type="text/javascript" language="javascript" src="datatables/media/js/dataTables.bootstrap.min.js">
+	</script>
 
 
 	<script type="text/javascript" language="javascript" src="js/dataTables.buttons.js">
@@ -73,35 +75,41 @@ Uncomment the below code and add class "responsive" to kick in Zurb Responsive P
     <style>
     @media screen and (min-width: 768px){
             .rwd-break { display: none; }
-        }
     </style>
 	<script type="text/javascript" language="javascript" class="init">
 	
 $(document).ready(function() {
-	$('#example').DataTable( {
-		"lengthMenu": [10,25,50,100],
+	var table = $('#example').DataTable( {
+				"lengthMenu": [10,25,50,100],
 		"scrollY": "400px",
   		"scrollCollapse": true,
   		responsive: true,
   		//fixedHeader: true,
 		language: {
-			lengthMenu: 'Rows : _MENU_' ,
+			 //lengthMenu: 'Rows : _MENU_' ,
 			 search: '<i style="font-size:15px;" class="fa fa-search"></i>',
         	 searchPlaceholder: '',
         	 //binfo: "Show page _ENTRY_ of _PAGES_",
         	 sInfo: '<i style="font-size:15px;" class="fa fa-list"></i> _START_ - _END_ of _TOTAL_',
-        	  paginate: {
-                "previous": '<i class="material-icons">keyboard_arrow_left</i>',
-                    "next": '<i class="material-icons">keyboard_arrow_right</i>'
+        	 paginate: {
+             previous: '<span class="glyphicon glyphicon-chevron-left"</span>',
+             next: '<span class="glyphicon glyphicon-chevron-right"</span>'
             }
     },
 		columnDefs: [
 			{
 				targets: [ 0, 1, 2, 3, 4 ],
-				className: 'mdl-data-table__cell--non-numeric'
+				className: 'mdl-data-table__cell--non-numeric',
+				//width: "10%",
+				//targets: [ 4 ],
 			}
-		]
+		],
+		//lengthChange: false,
+		buttons: ['pdf','excel','print','colvis']
 	} );
+
+	table.buttons().container()
+		.appendTo( '#example_wrapper .col-sm-6:eq(0)' );
 } );
 
 	</script>
@@ -116,54 +124,63 @@ $(document).ready(function() {
 
 <div class="row">
 
-<div class="col-sm-6 col-md-4">
- <div class="btn-group btn-group-justified" id="rrr" data-toggle="buttons">
- <label class="btn btn-default active">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" checked> All
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > 5
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> 6
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Praise" id="option_radio3" autocomplete="off"> 7
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 8
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 9
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Other" id="option_radio4" autocomplete="off"> 10
-  </label>
-</div>
-</div>
-<br class="rwd-break" />
-<div class="col-sm-6 col-md-4">
- <div class="btn-group btn-group-justified " data-toggle="buttons">
- <label class="btn btn-default active">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" checked> All
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > A
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> B
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > C
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Suggest" id="option_radio1" autocomplete="off" > D
-  </label>
-  <label class="btn btn-default">
-    <input type="radio" name="fb_type" value="Problem" id="id_problem" autocomplete="off"> E
-  </label>
+<form class="form-inline" action="generate_pdf.php" method="POST">
+<div class="col-md-3 text-center">
+  <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="control-label" for="selectbasic">Standard</label>
+                    <div class="inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>STD</b></span>
+                            <select id="id_std" name="s_std" class="form-control" required="" >
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
   </div>
+
+  <div class="col-md-3 text-center">
+   <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="control-label" for="selectbasic"> Division</label>
+                    <div class="inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><b>DIV</b></span>
+                            <select id="id_div" name="s_div" class="form-control" required="" >
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>
+                                <option value="H">H</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
   </div>
+
+<div class="col-md-3 text-center">
+<!-- Button -->
+                <div class="form-group">
+                    <label class="control-label" for="submit"></label>
+                    <div class="">
+                    <center>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Report </span>
+                        </button>
+                    </center>
+                    </div>
+                </div>
+ </div>
+
+</form>
 
 </div>
 <br>
@@ -175,7 +192,7 @@ $(document).ready(function() {
 
 
 
-<table id="example" class="mdl-data-table table-responsive" cellspacing="0" width="100%" >
+<table id="example" class="mdl-data-table table-responsive hover" cellspacing="0" width="100%" >
 			<thead>
 					<tr>
 						<th>#</th>

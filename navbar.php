@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
       </button>
 	  <div class="sli">
-      <a class="navbar-brand" href=""><span style="font-size: 30px;font-weight:700;color: white;"> pass</span>aakk!</a>
+      <a class="navbar-brand" href=""><span style="font-size: 30px;font-weight:700;color: white;"> </span>p!</a>
 	  </div>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
